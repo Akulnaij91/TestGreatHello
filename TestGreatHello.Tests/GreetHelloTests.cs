@@ -43,5 +43,37 @@ namespace TestGreatHello.Tests
             Assert.AreEqual("Hello, Oussama and Nicola." , actual);
             Assert.Pass("vi ho salutato entrambi");
         }
+
+        [Test]
+        public void Should_Send_Me_Hello_To_More_Than_Two_Names()
+        {
+            var actual = _sut.GreetHello("Gino", "Pino" , "Lino", "Rino");
+            Assert.AreEqual("Hello, Gino, Pino, Lino and Rino.", actual);
+            Assert.Pass("vi ho salutato tutti");
+        }
+
+        [Test]
+        public void Should_Send_Me_Hello_To_More_Than_Two_Names_Screaming()
+        {
+            var actual = _sut.GreetHello("Amy", "BRIAN", "Charlotte");
+            Assert.AreEqual("Hello, Amy and Charlotte. AND HELLO BRIAN!", actual);
+            Assert.Pass("vi ho salutato tutti, anche urlando");
+        }
+
+        [Test]
+        public void Should_Send_Me_Hello_To_More_Than_Two_Names_With_Comma()
+        {
+            var actual = _sut.GreetHello("Bob", "Charlie,Dianne");
+            Assert.AreEqual("Hello, Bob, Charlie and Dianne.", actual);
+            Assert.Pass("vi ho salutato tutti, anche in coppia");
+        }
+        [Test]
+        public void Should_Send_Me_Last(){
+            var actual = _sut.GreetHello("Bob", "\"Charlie, Dianne\"");
+            Assert.AreEqual("Hello, Bob and Charlie, Dianne.", actual);
+            Assert.Pass("Fine dei saluti");
+        }
+
+
     }
 }
